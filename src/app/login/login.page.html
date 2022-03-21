@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="bg">
+  <div class="card">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <p>LOGIN</p>
+      <img src="assets/images/smce.png" alt="" width="50" height="50">
+    <app-input label="Register No" formControlName="regno" ngDefaultControl></app-input>
+    <div>
+      <span *ngIf="submitted && errorCtr.regno.errors?.required"> register no is required</span>
+      <span *ngIf="submitted && errorCtr.regno.errors?.minlength"> maximum length is 10</span>
+
+
+    </div>
+    <app-input label="DOB" formControlName="dob" ngDefaultControl></app-input>
+    <div>
+      <span *ngIf="submitted && errorCtr.dob.errors?.required"> date of birth is required</span>
+
+    </div>
+
+    <button class="login" expand="block" type="submit">Login</button>
+  </form>
+  <p class="foot">ADMIN LOGIN</p>
+  </div>
+</div>
+
+</ion-content>
