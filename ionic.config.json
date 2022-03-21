@@ -1,0 +1,7 @@
+{
+  "name": "stucor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
