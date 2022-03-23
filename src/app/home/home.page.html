@@ -1,20 +1,90 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button menuID="custon.menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card color="success">
+          <ion-icon name="people"></ion-icon>
+            <ion-text>
+              <h2>Gatepass</h2>
+            </ion-text>          
+        </ion-card>        
+      </ion-col>
+  
+      <ion-col size="6">
+        <ion-card color="success">
+          <ion-icon name="people"></ion-icon>
+            <ion-text>
+              <h2>Leave Form</h2>
+            </ion-text>          
+        </ion-card>        
+      </ion-col>
+  
+      <ion-col size="6">
+        <ion-card color="success">
+          <ion-icon name="people"></ion-icon>
+            <ion-text>
+              <h2>Fees</h2>
+            </ion-text>          
+        </ion-card>        
+      </ion-col>
+  
+      <ion-col size="6">
+        <ion-card color="success">
+          <ion-icon name="add"></ion-icon>
+            <ion-text>
+              <h2>New require</h2>
+            </ion-text>          
+        </ion-card>        
+      </ion-col>
+    </ion-row>  
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </ion-grid>
+
 </ion-content>
+
+
+
+
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-content>
+      <ion-list class="ion-text-center main-header">
+          <div align="center">
+              <ion-avatar>
+                <img src="assets/images/smce.png">
+              </ion-avatar>
+              <ion-label color="white">
+                SMCE
+
+              </ion-label>
+          </div>
+      </ion-list>
+
+      <ion-menu-toggle class="menu-items" [autoHide]="false" *ngFor="let page of pages; let i = index">
+        <ion-item 
+          color="secondary"
+          class="ion-padding-start" 
+          lines="none" 
+          detail="false" 
+          [routerLink]="[page.url]" 
+          routerDirection="root"
+          routerLinkActive="selected">
+          <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+          <ion-label>{{page.title}}</ion-label>
+
+          
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>

@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  public pages:any[]=[
+    {title: 'About us', url:'/about',icon:'information-circle'},
+    {title: 'Privacy policy', url:'/privacy',icon:'document-lock'},
+    {title: 'Sign Out', url:'',icon:'log-out',route: false},
+  ]
+
+
   constructor() {}
 
 }
