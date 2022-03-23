@@ -8,12 +8,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'leave-form',
     pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'leave-form',
+    loadChildren: () => import('./leave-form/leave-form.module').then( m => m.LeaveFormPageModule)
+  },
+  {
+    path: 'gate-pass',
+    loadChildren: () => import('./gate-pass/gate-pass.module').then( m => m.GatePassPageModule)
+  },
+  {
+    path: 'inprocess',
+    loadChildren: () => import('./inprocess/inprocess.module').then( m => m.InprocessPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
   },
 ];
 

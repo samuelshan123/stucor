@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gate Pass</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+<!-- main app container -->
+<div class="bg">
+  <div class="card">
+              <h3 style="font-family: Gilroy; text-align: center;">Gate Pass Form </h3>
+              <div style="text-align: center;">
+                <img src="assets/images/smce.png" alt="" width="50" height="50">
+              </div>
+              <form [formGroup]="acForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Price Range</label>
+                      <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                      <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                          <div *ngIf="f.price.errors.required">Price Range is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Capacity(tons or litre)</label>
+                    <input type="text" formControlName="capacity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.capacity.errors }" />
+                    <div *ngIf="submitted && f.capacity.errors" class="invalid-feedback">
+                        <div *ngIf="f.capacity.errors.required">Capacity is required</div>
+                    </div>
+                </div>
+       
+                <div class="form-group">
+                  <label>Address</label>
+                  <textarea type="text"  rows="2" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" ></textarea>
+                  <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.errors.required">Address is required</div>
+                  </div>
+              </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="button" >Submit</button>
+                  </div>
+              </form>
+</div>
+</div>
+</ion-content>
