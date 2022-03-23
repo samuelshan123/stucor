@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Form Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <div class="container1">
+      <ul class="progressbar">
+        <li [class.active]="hod">Pending from HOD</li>
+        <li [class.active]="principal">Pending from Principal</li>
+        <li [class.active]="completed">Completed</li>
+      </ul>
+    </div>
+  </ion-item>
+</ion-content>
