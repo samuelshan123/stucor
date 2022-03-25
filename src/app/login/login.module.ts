@@ -10,6 +10,7 @@ import { LoginPage } from './login.page';
 import { SharedModule } from '../shared/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
       }
       
     ),
+    NgxSpinnerModule
   ],
   declarations: [LoginPage]
 })

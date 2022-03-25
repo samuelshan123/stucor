@@ -21,12 +21,12 @@
     <div>
       <span *ngIf="submitted && errorCtr.dob.errors?.required"> date of birth is required</span>
       <span *ngIf="errorCtr.dob.errors?.pattern">pattern must be dd/mm/yyyy</span>
-
-
     </div>
 
     <button class="login" expand="block" type="submit">Login</button>
   </form>
+  <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Logging In....</p></ngx-spinner>
+
   <p class="foot">ADMIN LOGIN</p>
   </div>
 </div>

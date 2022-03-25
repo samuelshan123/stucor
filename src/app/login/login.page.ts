@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
 
@@ -15,7 +16,8 @@ export class LoginPage implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder,private api:ApiService,private toaster:ToastrService) { }
+  constructor(private formBuilder: FormBuilder,private api:ApiService,private toaster:ToastrService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -30,21 +32,23 @@ export class LoginPage implements OnInit {
   }
 
   public onSubmit(){
-
     this.submitted = true;
     if (!this.myForm.valid) {
       console.log("invalid");
+      
       return;
     }
     else{
+      this.spinner.show();
       console.log(this.myForm.value);
 
       let payload={
-        stu_regno:this.myForm.value.regno,
-        stu_dob:this.myForm.value.dob
+        registerno:this.myForm.value.regno,
+        dob:this.myForm.value.dob
       }
       this.api.login(payload).subscribe((res:any)=>{
         if (res.length) {
+          this.spinner.hide();
           this.toaster.success("Login Successful",);
           console.log(res);
 
