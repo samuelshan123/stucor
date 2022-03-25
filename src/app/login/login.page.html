@@ -20,6 +20,8 @@
     <app-input label="DOB" formControlName="dob" ngDefaultControl></app-input>
     <div>
       <span *ngIf="submitted && errorCtr.dob.errors?.required"> date of birth is required</span>
+      <span *ngIf="errorCtr.dob.errors?.pattern">pattern must be dd/mm/yyyy</span>
+
 
     </div>
 

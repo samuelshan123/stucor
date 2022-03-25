@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'leave-form',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -30,6 +30,14 @@ const routes: Routes = [
   {
     path: 'notifications',
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'new-requests',
+    loadChildren: () => import('./new-requests/new-requests.module').then( m => m.NewRequestsPageModule)
+  },
+  {
+    path: 'view-details',
+    loadChildren: () => import('./view-details/view-details.module').then( m => m.ViewDetailsPageModule)
   },
 ];
 

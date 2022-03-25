@@ -8,6 +8,8 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { SharedModule } from '../shared/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -15,7 +17,17 @@ import { SharedModule } from '../shared/shared/shared.module';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    SharedModule,ReactiveFormsModule
+    SharedModule,ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(
+      {
+        maxOpened: 1,
+        preventDuplicates: true,
+        autoDismiss: true,
+        timeOut:2000
+      }
+      
+    ),
   ],
   declarations: [LoginPage]
 })
