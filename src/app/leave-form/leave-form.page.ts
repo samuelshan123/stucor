@@ -20,6 +20,7 @@ export class LeaveFormPage implements OnInit {
         date: ['', Validators.required],
         type: ['true', Validators.required],
         reason: ['', Validators.required],
+        phone: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
      
       });
   }

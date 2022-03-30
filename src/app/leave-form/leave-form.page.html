@@ -5,71 +5,119 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- main app container -->
+  <div class="bg">
+    <div class="card">
+      <h3 style="font-family: Gilroy; text-align: center">Leave Form</h3>
+      <div style="text-align: center">
+        <img src="assets/images/smce.png" alt="" width="50" height="50" />
+      </div>
+      <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Leave Type</label>
+          <div>
+            <div style="margin-top: 10px">
+              <label style="margin-left: 5px">
+                <input
+                  (change)="check($event)"
+                  type="radio"
+                  value="true"
+                  name="type"
+                  formControlName="type"
+                  checked
+                />
+                Single Day
+              </label>
 
-<!-- main app container -->
-<div class="bg">
-  <div class="card">
-              <h3 style="font-family: Gilroy; text-align: center;">Leave Form </h3>
-              <div style="text-align: center;">
-                <img src="assets/images/smce.png" alt="" width="50" height="50">
+              <div style="margin-top: 5px">
+                <label style="margin-left: 5px">
+                  <input
+                    (change)="check($event)"
+                    type="radio"
+                    value="false"
+                    name="type"
+                    formControlName="type"
+                  />
+                  Multiple Days</label
+                >
               </div>
-              <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
-                  
-                <div class="form-group">
-                  <label>Leave Type</label>
-                  <div>
-                     <div style="margin-top: 10px;">
-                       <label   style="margin-left: 5px;" >
-                         <input (change)='check($event)'  
-                         type="radio" value="true"  name ="type" formControlName="type" checked/>
-                         Single Day </label>
-                       
-                     <div style="margin-top: 5px;">
-                     
-                       <label style="margin-left: 5px;"  >
-                         <input (change)='check($event)' type="radio"  value="false" name="type" formControlName="type"
-                           >
-                         Multiple Days</label>
-                     </div>   
-                   </div>
-                 </div>
-                 </div>
-                         
-                  <div class="form-group dt" *ngIf="isDate">
-                    <label>Date</label>
-                    <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
-                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
-                        <div *ngIf="f.date.errors.required">date is required</div>
-                    </div>
-                </div>
+            </div>
+          </div>
+        </div>
 
-                <div class="form-group dt" *ngIf="!isDate">
-                  <label>From</label>
-                  <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" />
-                  <div *ngIf="submitted && f.fromDate.errors" class="invalid-feedback">
-                      <div *ngIf="f.fromDate.errors.required">From date is required</div>
-                  </div>
+        <div class="form-group dt" *ngIf="isDate">
+          <label>Date</label>
+          <input
+            type="date"
+            formControlName="date"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+          />
+          <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">date is required</div>
+          </div>
+        </div>
 
-                  <label style="margin-top: 10px;">To</label>
+        <div class="form-group dt" *ngIf="!isDate">
+          <label>From</label>
+          <input
+            type="date"
+            formControlName="fromDate"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }"
+          />
+          <div *ngIf="submitted && f.fromDate.errors" class="invalid-feedback">
+            <div *ngIf="f.fromDate.errors.required">From date is required</div>
+          </div>
 
-                  <input type="date"  formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }" />
-                  <div *ngIf="submitted && f.toDate.errors" class="invalid-feedback">
-                      <div *ngIf="f.toDate.errors.required">to Date is required</div>
-                  </div>
-              </div>
-       
-                <div class="form-group">
-                  <label>Reason</label>
-                  <textarea type="text"  placeholder="Write a valid reason..." rows="4" formControlName="reason" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.reason.errors }" ></textarea>
-                  <div *ngIf="submitted && f.reason.errors" class="invalid-feedback">
-                      <div *ngIf="f.reason.errors.required">Reason is required</div>
-                  </div>
-              </div>
+          <label style="margin-top: 10px">To</label>
 
-                  <div class="form-group">
-                    <button type="submit" class="button" >Submit</button>
-                  </div>
-              </form>
-</div>
-</div>
+          <input
+            type="date"
+            formControlName="toDate"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }"
+          />
+          <div *ngIf="submitted && f.toDate.errors" class="invalid-feedback">
+            <div *ngIf="f.toDate.errors.required">to Date is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Parent (or) Guardian Phone Number</label>
+          <input
+            placeholder="Phone"
+            formControlName="phone"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+          />
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Phone number is required</div>
+            <div *ngIf="f.phone.errors?.pattern">
+              Plaese enter valid phone number
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Reason</label>
+          <textarea
+            type="text"
+            placeholder="Write a valid reason..."
+            rows="4"
+            formControlName="reason"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.reason.errors }"
+          ></textarea>
+          <div *ngIf="submitted && f.reason.errors" class="invalid-feedback">
+            <div *ngIf="f.reason.errors.required">Reason is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </ion-content>
