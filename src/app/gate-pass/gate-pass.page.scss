@@ -42,7 +42,19 @@ div,label{
     padding-bottom: 3px;
     text-align: left;
 }
+label{
+    margin-bottom: 0.3rem;
+}
+
 
 form{
     margin-top: 20px;
+}
+
+::ng-deep {
+    .is-invalid {
+      .dropdown-btn {
+        border: 1px solid red !important;
+      }
+    }
 }

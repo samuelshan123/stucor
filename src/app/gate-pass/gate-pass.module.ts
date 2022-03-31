@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GatePassPageRoutingModule } from './gate-pass-routing.module';
 
 import { GatePassPage } from './gate-pass.page';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { GatePassPage } from './gate-pass.page';
     FormsModule,
     IonicModule,
     GatePassPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+
   ],
   declarations: [GatePassPage]
 })
