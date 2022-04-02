@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'gate-pass',
+    redirectTo: 'notifications',
     pathMatch: 'full'
   },
   {

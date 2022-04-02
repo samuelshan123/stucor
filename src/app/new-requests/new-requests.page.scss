@@ -24,7 +24,8 @@
     
     &__picture {
       max-width: 100%;
-      width: 60px;
+      // width: 60px;
+      width: 100%;
       border-radius: 50%;
       box-shadow: 0 0 0 5px #ebeef3;
    
@@ -34,7 +35,7 @@
       color: #979cb0;
       font-weight: 600;
       font-size: 15px;
-      text-align: center;
+      // text-align: center;
       letter-spacing: 0.64px;
       margin-left: 12px;
     }

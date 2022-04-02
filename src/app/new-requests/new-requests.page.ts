@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewRequestsPage implements OnInit {
 
+
+  dept: string = "cse";
   constructor() { }
 
   ngOnInit() {

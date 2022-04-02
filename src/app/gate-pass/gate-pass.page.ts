@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -53,13 +53,22 @@ public Purpose=["Paper Presentation","Symposium","Project","Sports","Sick","Pers
         type: ['true', Validators.required],
           purpose: ['', Validators.required],
           reason: ['', Validators.required],
-          students: ['', Validators.required],
+          // students: ['', Validators.required],
      
       });
   }
 
   check(e){
     console.log(e.target.value); 
+    if (e.target.value==='false') {
+      this.isGroup =true
+      this.myForm.addControl('students',new FormControl('',Validators.required));
+    } else if(e.target.value==='true') {
+      this.isGroup =false
+      this.myForm.removeControl('students');
+
+      
+    }
   }
 
   public onFilterChange(item: any) {
