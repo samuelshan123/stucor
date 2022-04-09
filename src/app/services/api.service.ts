@@ -6,18 +6,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  public URL = "https://unbruised-dive.000webhostapp.com/";
+  public URL = "http://localhost:8100/api/";
+
+public POST_URL:any={
+  LOGIN:this.URL+"login",
+  // student:this.URL+"studentLogin",
+
+}
+
+
+
   constructor(private http:HttpClient) { }
 // header = new HttpHeaders({
 //       Accept: 'application/json',
 //       'Content-Type': 'application/json',
 //     });
 
-  public login(data){
-    return this.http.post(this.URL+"login",data);
+  public login(url,data){
+    return this.http.post(url,data);
   }
 
-  public getData(){
-    return this.http.get(this.URL+"sdsRetrivePrayer.php");
-  }
+  // public getData(){
+  //   return this.http.get(this.URL+"sdsRetrivePrayer.php");
+  // }
 }

@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-<div class="bg">
+<div class="bg" *ngIf="!isStaff">
   <div class="card">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <p>LOGIN</p>
@@ -27,7 +27,35 @@
   </form>
   <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Logging In....</p></ngx-spinner>
 
-  <p class="foot">{{Data}}</p>
+  <p class="foot" (click)="userType('staff')">Staff Login</p>
+  </div>
+</div>
+
+<!-- staff -->
+
+<div class="bg" *ngIf="isStaff">
+  <div class="card">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <p>LOGIN</p>
+      <img src="assets/images/smce.png" alt="" width="50" height="50">
+    <app-input label="E-mail" formControlName="email" ngDefaultControl></app-input>
+    <div>
+      <span *ngIf="submitted && errorCtr.email.errors?.required"> email is required</span>
+      <span *ngIf="submitted && errorCtr.email.errors?.pattern">enter correct pattern</span>
+
+
+    </div>
+    <app-input label="Password" formControlName="password" ngDefaultControl></app-input>
+    <div>
+      <span *ngIf="submitted && errorCtr.password.errors?.required"> password is required</span>
+      <span *ngIf="errorCtr.password.errors?.minlength">passoword must be 6</span>
+    </div>
+
+    <button class="login" expand="block" type="submit">Login</button>
+  </form>
+  <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Logging In....</p></ngx-spinner>
+
+  <p class="foot" (click)="userType('student')">Student Login</p>
   </div>
 </div>
 

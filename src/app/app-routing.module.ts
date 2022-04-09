@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'notifications',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
