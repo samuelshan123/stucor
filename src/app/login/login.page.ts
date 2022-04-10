@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
@@ -25,7 +26,8 @@ export class LoginPage implements OnInit {
     private api: ApiService,
     private toaster: ToastrService,
     private spinner: NgxSpinnerService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -44,10 +46,6 @@ export class LoginPage implements OnInit {
       ],
     });
 
-  //   this.Form = this.formBuilder.group({
-  //     email: ['', [Validators.required, Validators.email]],
-  //     password: ['', [Validators.required, Validators.minLength(6)]],
-  //   });
   }
 
 
@@ -77,16 +75,7 @@ export class LoginPage implements OnInit {
   }
 
   }
-  // getData() {
-  //  this.api.getData().subscribe((res: any) => {
-  //       // console.log(res.prayerdata[0].yname);
-       
-  //       console.log(res);
-        
-  //         this.Data =res.prayerdata[0].yname;
-    
-  //     });
-  // }
+
 
   public get errorCtr() {
     return this.myForm.controls;
@@ -108,15 +97,22 @@ export class LoginPage implements OnInit {
         formdata:this.myForm.value,
         role: this.role,
       }
+      console.log(this.role);
+
 
       this.api.login(this.api.POST_URL.LOGIN,payload).subscribe((res: any) => {
-        if (res.length) {
+
+        console.log(res);
+
+        if (res.status === 'success') {
           this.spinner.hide();
           this.toaster.success('Login Successfull');
-          console.log(res);
-        } else {
+          console.log(res.user[0].role);
+          localStorage.setItem('role', res.user[0].role);
+          localStorage.setItem('user',JSON.stringify(res.user[0]));
+          this.router.navigateByUrl('/home');
+        } else  {
           this.spinner.hide();
-
           this.toaster.error('Invalid Credentials');
           console.log(res);
         }

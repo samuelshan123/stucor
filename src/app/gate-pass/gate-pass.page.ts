@@ -1,6 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-gate-pass',
@@ -10,30 +17,50 @@ import { Router } from '@angular/router';
 export class GatePassPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
-isGroup: boolean = false;
+  isGroup: boolean = false;
 
-@ViewChild('multiSelect') multiSelect;
+  @ViewChild('multiSelect') multiSelect;
   public loadContent: boolean = false;
   public data = [];
   public settings = {};
   public selectedItems = [];
-public Purpose=["Paper Presentation","Symposium","Project","Sports","Sick","Personal","Others"];
-  constructor(private formBuilder: FormBuilder,private router:Router) { }
+  public UserData: any = JSON.parse(localStorage.getItem('user'));
+
+  public Purpose = [
+    'Paper Presentation',
+    'Symposium',
+    'Project',
+    'Sports',
+    'Sick',
+    'Personal',
+    'Others',
+  ];
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private api: ApiService,
+    private toaster: ToastrService
+  ) {}
 
   ngOnInit() {
+    this.api
+      .getStudents(this.api.POST_URL.GET_STUDENTS, {
+        department: this.UserData.department,
+        semester: this.UserData.semester,
+      })
+      .subscribe((res: any) => {
+        if (res.status === 'success') {
+          console.log(res);
+          this.data = res.students;
+        } else {
+          this.toaster.error(res.status);
+        }
+      });
 
-    this.data = [
-      { item_id: 1, item_text: 'Ashik' },
-      { item_id: 2, item_text: 'Bibin' },
-      { item_id: 3, item_text: 'Jerry' },
-      { item_id: 4, item_text: 'Samuel' },
-      { item_id: 5, item_text: 'sahaya anish' },
-    ];
-    // setting and support i18n
     this.settings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'student_id',
+      textField: 'name',
       enableCheckAll: true,
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
@@ -49,25 +76,25 @@ public Purpose=["Paper Presentation","Symposium","Project","Sports","Sick","Pers
       defaultOpen: false,
     };
 
-      this.myForm = this.formBuilder.group({
-        type: ['true', Validators.required],
-          purpose: ['', Validators.required],
-          reason: ['', Validators.required],
-          // students: ['', Validators.required],
-     
-      });
+    this.myForm = this.formBuilder.group({
+      type: ['true', Validators.required],
+      purpose: ['', Validators.required],
+      reason: ['', Validators.required],
+      // students: ['', Validators.required],
+    });
   }
 
-  check(e){
-    console.log(e.target.value); 
-    if (e.target.value==='false') {
-      this.isGroup =true
-      this.myForm.addControl('students',new FormControl('',Validators.required));
-    } else if(e.target.value==='true') {
-      this.isGroup =false
+  check(e) {
+    console.log(e.target.value);
+    if (e.target.value === 'false') {
+      this.isGroup = true;
+      this.myForm.addControl(
+        'students',
+        new FormControl('', Validators.required)
+      );
+    } else if (e.target.value === 'true') {
+      this.isGroup = false;
       this.myForm.removeControl('students');
-
-      
     }
   }
 
@@ -92,17 +119,24 @@ public Purpose=["Paper Presentation","Symposium","Project","Sports","Sick","Pers
     console.log(items);
   }
 
-  get f() { return this.myForm.controls; }
+  get f() {
+    return this.myForm.controls;
+  }
 
   onSubmit() {
-      this.submitted = true;
-      if (this.myForm.invalid) {
-          return;
-      }else{
-     console.log(this.myForm.value);
-         
-  
-        }
-  
+    this.submitted = true;
+    if (this.myForm.invalid) {
+      return;
+    } else {
+      console.log(this.myForm.value);
+
+      let payload = {
+        user_id: this.UserData.user_id,
+        form_type: 'gate',
+        description: this.myForm.value,
+        status: 'PFI',
+        requested_at: Date.now(),
+      };
     }
   }
+}

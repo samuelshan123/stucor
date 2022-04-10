@@ -10,6 +10,7 @@ export class ApiService {
 
 public POST_URL:any={
   LOGIN:this.URL+"login",
+  GET_STUDENTS:this.URL+"getstudents"
   // student:this.URL+"studentLogin",
 
 }
@@ -17,16 +18,12 @@ public POST_URL:any={
 
 
   constructor(private http:HttpClient) { }
-// header = new HttpHeaders({
-//       Accept: 'application/json',
-//       'Content-Type': 'application/json',
-//     });
 
   public login(url,data){
     return this.http.post(url,data);
   }
 
-  // public getData(){
-  //   return this.http.get(this.URL+"sdsRetrivePrayer.php");
-  // }
+  public getStudents(url,data){
+    return this.http.post(url,data);
+  }
 }
