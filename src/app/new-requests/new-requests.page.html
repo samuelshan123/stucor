@@ -9,17 +9,18 @@
     <div>
     <article class="leaderboard">
       <div>
-        <main class="leaderboard__profiles">
-          <article class="leaderboard__profile">
+        <main class="leaderboard__profiles" *ngFor="let item of Requests">
+          <article class="leaderboard__profile" (click)="viewData(item)">
             <img src="assets/images/smce.png" alt="pic" class="leaderboard__picture">
-            <span class="leaderboard__name">samuel Raj <span>({{dept}})</span></span>
-            <span class="leaderboard__value">02/03/22  <span style="color: orange;">9:10pm</span>
+            <span class="leaderboard__name">{{item.name|titlecase}} <span>({{item.department}})</span></span>
+            <span class="leaderboard__value">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span>
           </span>
           </article>
         </main>
       </div>
     </article>
   </div>
+  <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Loading In....</p></ngx-spinner>
 
   <!-- <div *ngIf="Data.length<=0">
     <div class="no-data">

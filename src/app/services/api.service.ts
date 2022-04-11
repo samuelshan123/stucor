@@ -10,7 +10,12 @@ export class ApiService {
 
 public POST_URL:any={
   LOGIN:this.URL+"login",
-  GET_STUDENTS:this.URL+"getstudents"
+  GET_STUDENTS:this.URL+"getstudents",
+  REQUEST:this.URL+"request",
+  GET_REQUESTS:this.URL+"getrequests",
+  ACTIONS:this.URL+"action",
+  NOTIFICATIONS:this.URL+"notifications",
+  
   // student:this.URL+"studentLogin",
 
 }
@@ -19,11 +24,11 @@ public POST_URL:any={
 
   constructor(private http:HttpClient) { }
 
-  public login(url,data){
+  public Post(url,data){
     return this.http.post(url,data);
   }
 
-  public getStudents(url,data){
-    return this.http.post(url,data);
-  }
+  // public getStudents(url,data){
+  //   return this.http.post(url,data);
+  // }
 }

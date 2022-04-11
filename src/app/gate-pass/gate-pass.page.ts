@@ -43,8 +43,10 @@ export class GatePassPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.UserData);
+    
     this.api
-      .getStudents(this.api.POST_URL.GET_STUDENTS, {
+      .Post(this.api.POST_URL.GET_STUDENTS, {
         department: this.UserData.department,
         semester: this.UserData.semester,
       })
@@ -59,7 +61,7 @@ export class GatePassPage implements OnInit {
 
     this.settings = {
       singleSelection: false,
-      idField: 'student_id',
+      idField: 'id',
       textField: 'name',
       enableCheckAll: true,
       selectAllText: 'Select All',
@@ -131,12 +133,21 @@ export class GatePassPage implements OnInit {
       console.log(this.myForm.value);
 
       let payload = {
-        user_id: this.UserData.user_id,
-        form_type: 'gate',
-        description: this.myForm.value,
+        user_id: this.UserData.id,
+        form_type: 'gate pass',
+        description: JSON.stringify(this.myForm.value),
         status: 'PFI',
         requested_at: Date.now(),
-      };
+      }
+
+      this.api.Post(this.api.POST_URL.REQUEST, payload).subscribe((data:any)=>{
+        if(data.status === 'success'){
+          this.toaster.success(data.message);
+          this.router.navigate(['/home']);
+        }else{
+          this.toaster.error(data.message);
+        }
+      })
     }
   }
 }

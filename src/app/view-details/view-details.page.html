@@ -4,12 +4,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" >
+<ion-content class="ion-padding">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form>
 
-  <div class="container">
+            <h3 style="width: 100%; text-align: center;padding-bottom: 10px;">{{Title|titlecase}}</h3>
 
-    
+            <div class="form-group" *ngFor="let details of Details">
 
+              <div>
+                <div class="flex-container">
+                  <div class="flex-item-left">{{details.key}}</div>
+                  <div class="flex-item">:</div>
+                  <div class="flex-item-right">{{details.value}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="row">
+                <div class="button-area">
+                  <button type="submit" class="btn btn-labeled btn-success" (click)="click('y')">
+                    <span class="btn-label"><i class="fa fa-check"></i></span>Approve</button>
+                  <button id="space" type="submit" class="btn btn-labeled btn-danger" (click)="click('n')">
+                    <span class="btn-label"><i class="fa fa-close"></i></span>Need Enquiry</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+
 
 </ion-content>

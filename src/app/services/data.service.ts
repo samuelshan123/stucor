@@ -5,14 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-leaveForm:any=[
-  {
-   id:1,
-    name:"Samuel Raj",
-    dept:"cse",
+  public data:any=[]
+  public Form_Title:any;
 
-  }
-]
+
 
   constructor() { }
 }

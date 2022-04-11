@@ -90,7 +90,6 @@ export class LoginPage implements OnInit {
       return false;
     } else {
       this.spinner.show();
-      this.submitted = false;
       console.log(this.myForm.value);
 
       let payload = {
@@ -100,7 +99,7 @@ export class LoginPage implements OnInit {
       console.log(this.role);
 
 
-      this.api.login(this.api.POST_URL.LOGIN,payload).subscribe((res: any) => {
+      this.api.Post(this.api.POST_URL.LOGIN,payload).subscribe((res: any) => {
 
         console.log(res);
 
@@ -117,6 +116,10 @@ export class LoginPage implements OnInit {
           console.log(res);
         }
       });
+
+      this.myForm.reset();
+      this.submitted = false;
+
     }
   }
 }

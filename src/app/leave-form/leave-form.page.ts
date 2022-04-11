@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../services/api.service';
 
 
 @Component({
@@ -12,10 +14,13 @@ export class LeaveFormPage implements OnInit {
   leaveForm: FormGroup;
   submitted = false;
   isDate: boolean = true;
+  public UserData: any = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private formBuilder: FormBuilder,private router:Router) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,public toaster:ToastrService,private api:ApiService) { }
 
   ngOnInit() {
+    console.log(this.UserData.id);
+    
       this.leaveForm = this.formBuilder.group({
         date: ['', Validators.required],
         type: ['true', Validators.required],
@@ -49,14 +54,21 @@ export class LeaveFormPage implements OnInit {
           return;
       }else{
 
-        let payload={
-          user_id:1,
-          description:JSON.stringify(this.leaveForm.value),
-          status:'faculty',
-          created_at:Date.now()
+        let payload = {
+          user_id: this.UserData.id,
+          form_type: 'leave form',
+          description: JSON.stringify(this.leaveForm.value),
+          status: 'PFI',
+          requested_at: Date.now(),
         }
-     console.log(JSON.parse(payload.description));
-         
+        this.api.Post(this.api.POST_URL.REQUEST, payload).subscribe((data:any)=>{
+          if(data.status === 'success'){
+            this.toaster.success(data.message);
+            this.router.navigate(['/home']);
+          }else{
+            this.toaster.error(data.message);
+          }
+        })         
   
         }
     }
