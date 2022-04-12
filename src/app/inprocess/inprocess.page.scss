@@ -64,3 +64,90 @@ ion-toolbar{
   ul{
       padding-left: 0;
   }
+
+  .progressbar2 {
+    counter-reset: step;
+  }
+
+  .progressbar2 li {
+    position: relative;
+    list-style: none;
+    float: left;
+    color: black;
+    width: 33.33%;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .progressbar2 li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.671);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: red;
+    line-height: 39px;
+  }
+
+  .progressbar2 li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: orange ;
+    top: 20px;
+    left: -50%;
+    z-index: -1;
+  }
+
+  .progressbar2 li:first-child:after {
+    content: none;
+  }
+
+  .progressbar2 li.active:before {
+    background: #00E676;
+    content: "✔";
+  }
+
+  .progressbar2 li.active + li:after {
+    background: #00E676;
+  }
+  ul{
+      padding-left: 0;
+  }
+
+  
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-item-left {
+  background-color: #f8f9fa;
+  width: 45%;
+  padding: 10px; 
+}
+
+.flex-item-right {
+   padding: 10px;
+  background-color: #f8f9fa;
+  width: 50%; 
+}
+
+.flex-item {
+  background-color: #f8f9fa;
+  padding: 10px;
+  width: 5%;
+}
+
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 0.3rem;
+}

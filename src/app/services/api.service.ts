@@ -15,6 +15,9 @@ public POST_URL:any={
   GET_REQUESTS:this.URL+"getrequests",
   ACTIONS:this.URL+"action",
   NOTIFICATIONS:this.URL+"notifications",
+  HOD_APPROVED:this.URL+"hodApproved",
+  COMPLETED:this.URL+"completed",
+
   
   // student:this.URL+"studentLogin",
 

@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'view-details',
     loadChildren: () => import('./view-details/view-details.module').then( m => m.ViewDetailsPageModule)
   },
+  {
+    path: 'completed',
+    loadChildren: () => import('./completed/completed.module').then( m => m.CompletedPageModule)
+  },
 ];
 
 @NgModule({

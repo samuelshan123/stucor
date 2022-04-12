@@ -23,9 +23,9 @@ public Fields:any;
   public student_board:any=[
     {title: 'Gate Pass', url:'/gate-pass',icon:'person'},
     {title: 'Leave Form', url:'/leave-form',icon:'person'},
-    {title: 'Form Status', url:'/inprocess',icon:'person'},
+    {title: 'Form Status', url:'/notifications',icon:'person'},
     {title:'Notifications',url:'/notifications',icon:'person'},
-    {title:'Completed Forms',url:'/notifications',icon:'person'},
+    {title:'Completed Forms',url:'/completed',icon:'person'},
     {title:'Actions',url:'/notifications',icon:'person'},
   ]
 

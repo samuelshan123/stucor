@@ -71,14 +71,7 @@ public Title=""
         role:this.Role
       }
 
-      this.api.Post(this.api.POST_URL.ACTIONS,payload).subscribe((res:any)=>{
-        if(res.status=='success'){
-          // this.toaster.success('Request Approved');
-          this.router.navigate(['/new-requests']);
-        }else{
-          this.toaster.error('Something went wrong');
-        }
-      });
+      this.updateForm(payload);
     }
     else if(e==='n'&& this.Role==='in-charge') {
       let payload={
@@ -89,17 +82,44 @@ public Title=""
         role:this.Role
       }
       console.log('rejected by ', this.userData.name);
-      this.api.Post(this.api.POST_URL.ACTIONS,payload).subscribe((res:any)=>{
-        if(res.status=='success'){
-          // this.toaster.success('Request Approved');
-          this.router.navigate(['/new-requests']);
-        }else{
-          this.toaster.error('Something went wrong');
-        }
-      });
-    }
-    
+      this.updateForm(payload);
 
+    }
+
+    else if(e==='y'&& this.Role==='hod') {
+      let payload={
+        status:'AFH',
+        hod_id:this.userData.id,
+        hactioned_at:Date.now(),
+        id:this.data.id,
+        role:this.Role
+      }
+      console.log('approved by ', this.userData.name);
+      this.updateForm(payload);
+    }
+    else if(e==='n'&& this.Role==='hod') {
+      let payload={
+        status:'EFH',
+        hod_id:this.userData.id,
+        hactioned_at:Date.now(),
+        id:this.data.id,
+        role:this.Role
+      }
+      console.log('rejected by ', this.userData.name);
+      this.updateForm(payload);
+    } 
+
+  }
+
+  updateForm(payload){
+    this.api.Post(this.api.POST_URL.ACTIONS,payload).subscribe((res:any)=>{
+      if(res.status=='success'){
+        // this.toaster.success('Request Approved');
+        this.router.navigate(['/new-requests']);
+      }else{
+        this.toaster.error('Something went wrong');
+      }
+    });
   }
 
 

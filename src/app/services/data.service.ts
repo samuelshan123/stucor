@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   public data:any=[]
+  public inprocessData:any
   public Form_Title:any;
 
 
