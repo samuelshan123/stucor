@@ -24,6 +24,38 @@ export class InprocessPage implements OnInit {
     console.log(this.dataService.inprocessData);
 
     if(this.dataService.inprocessData.form_type=='leave form'){
+      
+      if (this.dataService.inprocessData.description.type==='true') {
+        // data.push({name:"No of Days",value:'single'});
+        var data=[
+          {name:"Form Type",value:this.dataService.inprocessData.form_type},
+          {name:"No of Days",value:'single'},
+          {name:"Leave Date",value:this.dataService.inprocessData.description.date},
+          {name:"Reason",value:this.dataService.inprocessData.description.reason},
+          {name:"Approved By",value:this.dataService.inprocessData.name},
+
+
+          // {name:""}
+        ]
+        this.Details=data;
+
+      }
+        
+      } if(this.dataService.inprocessData.description.type==='false'){
+        var data=[
+          {name:"Form Type",value:this.dataService.inprocessData.form_type},
+          {name:"No of Days",value:'Multiple'},
+          {name:"Leave From",value:this.dataService.inprocessData.description.fromDate},
+          {name:"Leave To",value:this.dataService.inprocessData.description.toDate},
+          {name:"Reason",value:this.dataService.inprocessData.description.reason},
+          {name:"Approved By",value:this.dataService.inprocessData.name},
+        ]
+        this.Details=data;
+      
+    }
+    
+
+  
       if (this.dataService.inprocessData.status=='AFI') {
         this.incharge=true;  
       }
@@ -34,17 +66,8 @@ export class InprocessPage implements OnInit {
       }
         
       
-      var data=[
-        {name:"Approved By",value:this.dataService.inprocessData.name},
-        // {name:""}
-
-      ]
+      
 
     }
-
-    this.Details=data;
-    
-
-  }
 
 }

@@ -27,4 +27,27 @@
     </div>
   </div>
 </div>
+
+<div style="margin-top: 10px;" *ngIf="Enquiry.length">
+  <div  *ngFor="let item of Enquiry">
+    <div class="notification" (click)="enquiry('i')">
+      
+      <div class="faculty">{{item.name}}</div>
+      <div class="status" style="color: red;">{{item.status=='EFI'?'Enquiry Required ':'Enquiry Required'}}</div>
+      <span class="date" style="color:rgb(0, 191, 255);">{{item.iactioned_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.iactioned_at|date:'h:mm a'}}</span></span>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 10px;" *ngIf="hodEnquiry.length">
+  <div  *ngFor="let item of hodEnquiry">
+    <div class="notification" (click)="enquiry('h')">
+      
+      <div class="faculty">{{item.name}}</div>
+      <div class="status" style="color: red;">{{item.status=='EFI'?'Enquiry Required ':'Enquiry Required'}}</div>
+      <span class="date" style="color:rgb(0, 191, 255);">{{item.hactioned_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.hactioned_at|date:'h:mm a'}}</span></span>
+    </div>
+  </div>
+</div>
+
 </ion-content>

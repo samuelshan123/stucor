@@ -41,6 +41,7 @@ export class NewRequestsPage implements OnInit {
         for (let i = 0; i < res.requests.length; i++) {
           let details ={
             id:res.requests[i].id,
+            request_id:res.requests[i].request_id,
             name:res.requests[i].name,
             regno:res.requests[i].regno,
             department:res.requests[i].department,

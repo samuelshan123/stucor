@@ -17,6 +17,8 @@ public POST_URL:any={
   NOTIFICATIONS:this.URL+"notifications",
   HOD_APPROVED:this.URL+"hodApproved",
   COMPLETED:this.URL+"completed",
+  INCHARGE_INQUIRY:this.URL+"inchargeInquiry",
+  HOD_INQUIRY:this.URL+"hodInquiry",
 
   
   // student:this.URL+"studentLogin",

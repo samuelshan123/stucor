@@ -68,18 +68,23 @@ public Title=""
         incharge_id:this.userData.id,
         iactioned_at:Date.now(),
         id:this.data.id,
-        role:this.Role
+        role:this.Role,
+        request_id:this.data.request_id
       }
 
       this.updateForm(payload);
     }
     else if(e==='n'&& this.Role==='in-charge') {
+      console.log('rejected by ', this.userData.request_id);
+      
       let payload={
         status:'EFI',
         incharge_id:this.userData.id,
         iactioned_at:Date.now(),
         id:this.data.id,
-        role:this.Role
+        role:this.Role,
+        request_id:this.data.request_id
+
       }
       console.log('rejected by ', this.userData.name);
       this.updateForm(payload);
@@ -92,18 +97,23 @@ public Title=""
         hod_id:this.userData.id,
         hactioned_at:Date.now(),
         id:this.data.id,
-        role:this.Role
+        role:this.Role,
+        request_id:this.data.request_id
+
       }
       console.log('approved by ', this.userData.name);
       this.updateForm(payload);
     }
     else if(e==='n'&& this.Role==='hod') {
+      console.log('rejected by ', this.userData.request_id);
+
       let payload={
         status:'EFH',
         hod_id:this.userData.id,
         hactioned_at:Date.now(),
         id:this.data.id,
-        role:this.Role
+        role:this.Role,
+        request_id:this.data.request_id
       }
       console.log('rejected by ', this.userData.name);
       this.updateForm(payload);
@@ -115,7 +125,7 @@ public Title=""
     this.api.Post(this.api.POST_URL.ACTIONS,payload).subscribe((res:any)=>{
       if(res.status=='success'){
         // this.toaster.success('Request Approved');
-        this.router.navigate(['/new-requests']);
+        this.router.navigate(['/home']);
       }else{
         this.toaster.error('Something went wrong');
       }

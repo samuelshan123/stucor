@@ -15,6 +15,8 @@ export class NotificationsPage implements OnInit {
 
   Data:any=[];
   HodApproved:any=[];
+  Enquiry:any=[];
+  hodEnquiry:any=[];
 
   constructor(private api:ApiService,private spinner:NgxSpinnerService,
     private router:Router,private toaster:ToastrService,private dataService:DataService) { }
@@ -22,6 +24,28 @@ export class NotificationsPage implements OnInit {
   ngOnInit() {
 
     console.log(this.userData.id);
+
+    // hod inqury
+    this.api.Post(this.api.POST_URL.HOD_INQUIRY,{id:this.userData.id}).subscribe((res:any)=>{
+      if(res.status=='success'){
+        console.log(res);
+        this.hodEnquiry=res.data;
+        console.log(this.HodApproved);
+      }else{
+        this.toaster.error(res.message);
+      }
+    })
+
+    // incharge inquire
+    this.api.Post(this.api.POST_URL.INCHARGE_INQUIRY,{id:this.userData.id}).subscribe((res:any)=>{
+      if(res.status=='success'){
+        console.log(res.data);
+        this.Enquiry=res.data;
+        // console.log(this.Data);
+      }else{
+        this.toaster.error(res.message);
+      }
+    });
     
 
     //hod accepted
@@ -68,6 +92,28 @@ export class NotificationsPage implements OnInit {
       this.dataService.inprocessData=datas;
       this.router.navigateByUrl('/inprocess');
       
+  }
+
+  enquiry(e){
+    console.log(e);
+    if (e==='i') {
+      this.toaster.error("Please meet your class Incharge","Enquiry Required",{
+        
+        positionClass:'toast-top-center',
+        closeButton:true,
+        timeOut:4000,
+      
+      });
+    }
+    else if(e==='h'){
+      this.toaster.error("Please meet your HOD","Enquiry Required",{
+        
+        positionClass:'toast-top-center',
+        closeButton:true,
+        timeOut:4000,
+      
+      });
+    }
     
 
   }
