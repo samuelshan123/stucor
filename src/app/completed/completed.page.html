@@ -6,9 +6,10 @@
 
 <ion-content class="ion-padding">
 
+  <div>
   <div *ngIf="Data.length">
   <div  *ngFor="let item of Data">
-    <div class="notification" (click)="getData(item)">
+    <div class="notification" (click)="viewData(item)">
       
       <div class="faculty">{{item.name}}</div>
       <div class="status">{{item.status=='AFH'?'Completed':'Enquiry Required'}}</div>
@@ -16,5 +17,18 @@
     </div>
   </div>
 </div>
+</div>
 
+<div *ngIf="Requests.length">
+    <div>
+      <main class="leaderboard__profiles" *ngFor="let item of Requests">
+        <article class="leaderboard__profile" (click)="viewData(item)">
+          <img src="assets/images/smce.png" alt="pic" class="leaderboard__picture">
+          <span class="leaderboard__name">{{item.name|titlecase}} <span>({{item.department}})</span></span>
+          <span class="leaderboard__value">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span>
+        </span>
+        </article>
+      </main>
+    </div>
+</div>
 </ion-content>

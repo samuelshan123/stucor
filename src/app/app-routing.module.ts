@@ -43,6 +43,18 @@ const routes: Routes = [
     path: 'completed',
     loadChildren: () => import('./completed/completed.module').then( m => m.CompletedPageModule)
   },
+  {
+    path: 'actions',
+    loadChildren: () => import('./actions/actions.module').then( m => m.ActionsPageModule)
+  },
+  {
+    path: 'view-actions',
+    loadChildren: () => import('./view-actions/view-actions.module').then( m => m.ViewActionsPageModule)
+  },
+  {
+    path: 'completed-forms',
+    loadChildren: () => import('./completed-forms/completed-forms.module').then( m => m.CompletedFormsPageModule)
+  },
 ];
 
 @NgModule({

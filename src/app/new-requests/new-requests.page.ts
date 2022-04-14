@@ -31,6 +31,10 @@ export class NewRequestsPage implements OnInit {
     } else if(this.Role==='hod'){
        payload={department:this.userData.department,role:this.Role}
     }
+    else if(this.Role==='principal'){
+      payload={role:this.Role}
+    }
+
       
     this.api.Post(this.api.POST_URL.GET_REQUESTS,payload).subscribe((res:any)=>{
       if(res.status=='success'){

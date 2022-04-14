@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
 
  public userType(type){
-    this.submitted = false;
+    // this.submitted = false;
 
     this.isStaff = !this.isStaff;
 
@@ -117,8 +117,8 @@ export class LoginPage implements OnInit {
         }
       });
 
-      this.myForm.reset();
-      this.submitted = false;
+      // this.myForm.reset();
+      // this.submitted = false;
 
     }
   }

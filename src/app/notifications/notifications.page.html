@@ -50,4 +50,15 @@
   </div>
 </div>
 
+<div style="margin-top: 10px;" *ngIf="PrincipalApproved.length">
+  <div  *ngFor="let item of PrincipalApproved">
+    <div class="notification" (click)="getData(item)">
+      
+      <div class="faculty">{{item.name}}</div>
+      <div class="status">{{item.status}}</div>
+      <span class="date" style="color:rgb(0, 191, 255);">{{item.pactioned_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.pactioned_at|date:'h:mm a'}}</span></span>
+    </div>
+  </div>
+</div>
+
 </ion-content>

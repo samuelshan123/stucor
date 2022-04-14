@@ -19,8 +19,11 @@ public POST_URL:any={
   COMPLETED:this.URL+"completed",
   INCHARGE_INQUIRY:this.URL+"inchargeInquiry",
   HOD_INQUIRY:this.URL+"hodInquiry",
+  ACTIONS_REQUIRED:this.URL+"actionsRequired",
+  STUDENT_HACTION:this.URL+"studentHaction",
+  STUDENTIACTION:this.URL+"studentIaction",
+  PRINCIPAL_APPROVED:this.URL+"principalApproved",
 
-  
   // student:this.URL+"studentLogin",
 
 }

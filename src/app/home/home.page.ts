@@ -26,13 +26,13 @@ public Fields:any;
     {title: 'Form Status', url:'/notifications',icon:'person'},
     {title:'Notifications',url:'/notifications',icon:'person'},
     {title:'Completed Forms',url:'/completed',icon:'person'},
-    {title:'Actions',url:'/notifications',icon:'person'},
+    // {title:'Actions',url:'/notifications',icon:'person'},
   ]
 
   public staff_board:any=[
     {title: 'New Requests', url:'/new-requests',icon:'person'},
-    {title:'Completed Forms',url:'/notifications',icon:'person'},
-    {title:'Actions',url:'/notifications',icon:'person'},
+    {title:'Completed Forms',url:'/completed',icon:'person'},
+    {title:'Actions',url:'/actions',icon:'person'},
   ]
   constructor(private router:Router,private menu:MenuController) {
     this.Role=localStorage.getItem('role');
@@ -48,6 +48,9 @@ public Fields:any;
       this.Fields=this.staff_board;
     }
     else if(this.Role=='hod'){
+      this.Fields=this.staff_board;
+    }
+    else if(this.Role=='principal'){
       this.Fields=this.staff_board;
     }
   }

@@ -2,17 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 
 @Component({
-  selector: 'app-inprocess',
-  templateUrl: './inprocess.page.html',
-  styleUrls: ['./inprocess.page.scss'],
+  selector: 'app-completed-forms',
+  templateUrl: './completed-forms.page.html',
+  styleUrls: ['./completed-forms.page.scss'],
 })
-export class InprocessPage implements OnInit {
-
-  incharge:boolean=false;
-  hod:boolean=false;
-  principal:boolean=false;
-  completed:boolean=false;
-
+export class CompletedFormsPage implements OnInit {
   public Details:any;
 
   Form:any=this.dataService.inprocessData.form_type;
@@ -20,8 +14,7 @@ export class InprocessPage implements OnInit {
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
-
-    console.log(this.dataService.inprocessData.form_type);
+    console.log(this.dataService.inprocessData);
 
     if(this.dataService.inprocessData.form_type=='leave form'){
       
@@ -41,7 +34,7 @@ export class InprocessPage implements OnInit {
 
       }
         
-      } if(this.dataService.inprocessData.description.type==='false'){
+       if(this.dataService.inprocessData.description.type==='false'){
         var data=[
           {name:"Form Type",value:this.dataService.inprocessData.form_type},
           {name:"No of Days",value:'Multiple'},
@@ -51,24 +44,22 @@ export class InprocessPage implements OnInit {
           {name:"Approved By",value:this.dataService.inprocessData.name},
         ]
         this.Details=data;
-      
+       }
     }
     else if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.description.type==='true') {
       var gatePass = [
-        // {name:"Name",value:this.dataService.inprocessData.name},
-        // {name:"Register Number",value:this.dataService.inprocessData.regno},
-        // {name:"Department",value:this.dataService.inprocessData.department},
-        // {name:"Year",value:this.dataService.inprocessData.year},
-        {name:"Form Type",value:this.dataService.inprocessData.form_type},
+        {name:"Name",value:this.dataService.inprocessData.name},
+        {name:"Register Number",value:this.dataService.inprocessData.regno},
+        {name:"Department",value:this.dataService.inprocessData.department},
+        {name:"Year",value:this.dataService.inprocessData.year},
         {name:"Gate Pass For",value:'Myself'},
         // {name:"Leave Date",value:this.data.description.date},
         {name:"Description",value:this.dataService.inprocessData.description.reason},
-        {name:"Approved By",value:this.dataService.inprocessData.name},
       ]
       this.Details=gatePass;
       
     }
-     if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.description.type==='false') {
+    else if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.description.type==='false') {
       console.log(this.dataService.inprocessData.description.students);
       
 
@@ -78,55 +69,21 @@ export class InprocessPage implements OnInit {
       }
       
       var gatePass = [
-        // {name:"Name",value:this.dataService.inprocessData.name},
-        // {name:"Register Number",value:this.dataService.inprocessData.regno},
-        // {name:"Department",value:this.dataService.inprocessData.department},
-        // {name:"Year",value:this.dataService.inprocessData.year},
-        {name:"Form Type",value:this.dataService.inprocessData.form_type},
+        {name:"Name",value:this.dataService.inprocessData.name},
+        {name:"Register Number",value:this.dataService.inprocessData.regno},
+        {name:"Department",value:this.dataService.inprocessData.department},
+        {name:"Year",value:this.dataService.inprocessData.year},
         {name:"Gate Pass For",value:'My Group'},
         {name:"No of Students",value:this.dataService.inprocessData.description.students.length},
         {name:"Students",value:students},
         // {name:"Leave Date",value:this.data.description.date},
         {name:"Description",value:this.dataService.inprocessData.description.reason},
-        {name:"Approved By",value:this.dataService.inprocessData.name},
       ]
       this.Details=gatePass;
       
     }
 
-    
 
-  
-      if (this.dataService.inprocessData.form_type==='leave form' && this.dataService.inprocessData.status=='AFI') {
-        this.incharge=true;  
-      }
-      else if(this.dataService.inprocessData.form_type==='leave form' && this.dataService.inprocessData.status=='AFH'){
-        this.incharge=true;
-        this.hod=true;
-        this.completed=true;
-      }
-        
-      else if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.status=='AFI'){
-        this.incharge=true;
-        // this.hod=true;
-        // this.principal=true;
-        // this.completed=true;
-      }
-      else if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.status=='AFH'){
-        this.incharge=true;
-        this.hod=true;
-        // this.principal=true;
-        // this.completed=true;
-      }
-      else if(this.dataService.inprocessData.form_type==='gate pass' && this.dataService.inprocessData.status=='completed'){
-        this.incharge=true;
-        this.hod=true;
-        this.principal=true;
-        this.completed=true;
-      }
-      
-      
-
-    }
+  }
 
 }

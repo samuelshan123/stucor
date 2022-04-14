@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>actions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<div>
+
+
+</div>
+
+<div>
+  <article class="leaderboard">
+    <div>
+      <main class="leaderboard__profiles" *ngFor="let item of Details">
+        <article class="leaderboard__profile" (click)="viewData(item)">
+          <img src="assets/images/smce.png" alt="pic" class="leaderboard__picture">
+          <span class="leaderboard__name">{{item.name|titlecase}} <span>({{item.department}})</span></span>
+          <span class="leaderboard__value">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span>
+        </span>
+        </article>
+      </main>
+    </div>
+  </article>
+</div>
+<!-- <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Loading In....</p></ngx-spinner> -->
+
+
+</ion-content>

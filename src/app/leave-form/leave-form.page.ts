@@ -63,7 +63,7 @@ export class LeaveFormPage implements OnInit {
         }
         this.api.Post(this.api.POST_URL.REQUEST, payload).subscribe((data:any)=>{
           if(data.status === 'success'){
-            this.toaster.success(data.message);
+            this.toaster.success("Leave Request has been sent");
             this.router.navigate(['/home']);
           }else{
             this.toaster.error(data.message);

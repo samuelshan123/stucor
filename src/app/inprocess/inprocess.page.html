@@ -14,11 +14,11 @@
         <li [class.active]="completed">Completed</li>
       </ul>
     </div>
-    <div class="container1"  *ngIf="!Form=='leave form'">
+    <div class="container1"  *ngIf="Form=='gate pass'">
       <ul class="progressbar">
-        <li [class.active]="hod">Pending from In-charge</li>
-        <li [class.active]="hod">Pending from HOD</li>
-        <li [class.active]="principal">Pending from Principal</li>
+        <li [class.active]="incharge">In-charge</li>
+        <li [class.active]="hod">HOD</li>
+        <li [class.active]="principal">Principal</li>
         <li [class.active]="completed">Completed</li>
       </ul>
     </div>

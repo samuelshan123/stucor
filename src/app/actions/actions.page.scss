@@ -1,52 +1,14 @@
-.notification{
-    border-radius: 10px;
-    height: 70px;
-    width: 100%;
-    margin-bottom: 10px;
-    display: grid;
-    align-items: center;
-    text-align: center;
-      grid-template-columns: 1fr 3fr 1fr;
-      padding: 15px 8px 15px 5px;
-    box-shadow: 0 0 40px -10px rgba(0, 0, 0, .4);
-}
-
-.faculty{
-    color: #979cb0;
-    font-weight: 600;
-    font-size: 15px;
-    // text-align: center;
-    letter-spacing: 0.64px;
-    margin-left: 12px;
-}
-
-.status{
-    color: #06ff55;
-    font-weight: 600;
-    font-size: 15px;
-    // text-align: center;
-    letter-spacing: 0.64px;
-    margin-left: 12px;
-}
-
-.date{
-    color: #979cb0;
-    font-weight: 600;
-    font-size: 10px;
-    // text-align: center;
-    letter-spacing: 0.64px;
-    margin-left: 12px;
-}
-
 ion-toolbar{
     --background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
-    color: #fff;
-}
-.leaderboard {
+    color: white;
+ 
+ }
+
+ .leaderboard {
     // max-width: 490px;
     width: 100%;
     border-radius: 12px;
-    // padding: 15px;
+    padding: 15px;
     
     &__profile {
       margin-top: 10px;
