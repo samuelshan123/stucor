@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InprocessPageRoutingModule } from './inprocess-routing.module';
+import { CompletedGatePassPageRoutingModule } from './completed-gate-pass-routing.module';
 
-import { InprocessPage } from './inprocess.page';
+import { CompletedGatePassPage } from './completed-gate-pass.page';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     CommonModule,
     FormsModule,
     IonicModule,
-    InprocessPageRoutingModule,
+    CompletedGatePassPageRoutingModule,
     NgxQRCodeModule
   ],
-  declarations: [InprocessPage]
+  declarations: [CompletedGatePassPage]
 })
-export class InprocessPageModule {}
+export class CompletedGatePassPageModule {}

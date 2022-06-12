@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -12,16 +13,20 @@ export class InprocessPage implements OnInit {
   hod:boolean=false;
   principal:boolean=false;
   completed:boolean=false;
-
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = JSON.stringify(this.dataService.inprocessData)
   public Details:any;
 
   Form:any=this.dataService.inprocessData.form_type;
 
-  constructor(private dataService:DataService) { }
+  constructor(public dataService:DataService) { }
 
   ngOnInit() {
 
     console.log(this.dataService.inprocessData.form_type);
+    console.log(JSON.stringify(this.dataService.inprocessData));
+    
 
     if(this.dataService.inprocessData.form_type=='leave form'){
       

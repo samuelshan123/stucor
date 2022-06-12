@@ -10,9 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { CompletedGatepassPipe } from './completed-gatepass.pipe';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CompletedGatepassPipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     BrowserAnimationsModule,
@@ -29,7 +31,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ),
     NgxSpinnerModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },BarcodeScanner
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

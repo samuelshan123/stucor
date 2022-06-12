@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -32,9 +32,14 @@ const routes: Routes = [
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
   },
   {
+    path: 'form-status',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
     path: 'new-requests',
     loadChildren: () => import('./new-requests/new-requests.module').then( m => m.NewRequestsPageModule)
   },
+  
   {
     path: 'view-details',
     loadChildren: () => import('./view-details/view-details.module').then( m => m.ViewDetailsPageModule)
@@ -54,6 +59,18 @@ const routes: Routes = [
   {
     path: 'completed-forms',
     loadChildren: () => import('./completed-forms/completed-forms.module').then( m => m.CompletedFormsPageModule)
+  },
+  {
+    path: 'completed-gate-pass',
+    loadChildren: () => import('./completed-gate-pass/completed-gate-pass.module').then( m => m.CompletedGatePassPageModule)
+  },
+  {
+    path: 'scan-qr',
+    loadChildren: () => import('./scan-qr/scan-qr.module').then( m => m.ScanQrPageModule)
+  },
+  {
+    path: 'checked-out',
+    loadChildren: () => import('./checked-out/checked-out.module').then( m => m.CheckedOutPageModule)
   },
 ];
 

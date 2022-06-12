@@ -9,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  public Role:any='';
+  public Role:any=localStorage.getItem('role');;
   // public Role:any='student';
   public userData:any=JSON.parse(localStorage.getItem('user'));
 public Fields:any;
@@ -23,9 +23,10 @@ public Fields:any;
   public student_board:any=[
     {title: 'Gate Pass', url:'/gate-pass',icon:'person'},
     {title: 'Leave Form', url:'/leave-form',icon:'person'},
-    {title: 'Form Status', url:'/notifications',icon:'person'},
+    {title: 'Form Status', url:'/form-status',icon:'person'},
     {title:'Notifications',url:'/notifications',icon:'person'},
     {title:'Completed Forms',url:'/completed',icon:'person'},
+    {title:'Completed Gate Pass',url:'/completed-gate-pass',icon:'person'},
     // {title:'Actions',url:'/notifications',icon:'person'},
   ]
 
@@ -34,14 +35,15 @@ public Fields:any;
     {title:'Completed Forms',url:'/completed',icon:'person'},
     {title:'Actions',url:'/actions',icon:'person'},
   ]
-  constructor(private router:Router,private menu:MenuController) {
-    this.Role=localStorage.getItem('role');
-  }
 
-  ngOnInit() {
-    console.log(this.Role);
+  public security_board:any=[
+    {title:'Scan QR Code',url:'/scan-qr',icon:'qr-code-outline'},
+    {title:'Checked out form',url:'/checked-out',icon:'person'},
+
+  ]
+  constructor(private router:Router,private menu:MenuController) {
     
-    
+     
     if(this.Role=='student'){
       this.Fields=this.student_board;
     }else if(this.Role=='in-charge'){
@@ -53,12 +55,21 @@ public Fields:any;
     else if(this.Role=='principal'){
       this.Fields=this.staff_board;
     }
+    else if(this.Role=='security'){
+      this.Fields=this.security_board;
+    }
+  }
+
+  ngOnInit() {
+    console.log(this.Role);
+    
+   
   }
 
   public logout(){
     this.Role='';
     this.Fields=[];
-    localStorage.clear();
+    window.localStorage.clear();
     this.menu.close();
     this.router.navigateByUrl('/login');
   }
