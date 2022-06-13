@@ -15,18 +15,21 @@ export class InprocessPage implements OnInit {
   completed:boolean=false;
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = JSON.stringify(this.dataService.inprocessData)
+  public value:any ;
   public Details:any;
+  public status:any;
 
   Form:any=this.dataService.inprocessData.form_type;
 
   constructor(public dataService:DataService) { }
 
   ngOnInit() {
-
-    console.log(this.dataService.inprocessData.form_type);
-    console.log(JSON.stringify(this.dataService.inprocessData));
+    this.value=`${this.dataService.inprocessData.request_id}`;   
+    console.log(this.value);
+     
     
+    console.log(this.dataService.inprocessData);
+    this.status=this.dataService.inprocessData.status;
 
     if(this.dataService.inprocessData.form_type=='leave form'){
       

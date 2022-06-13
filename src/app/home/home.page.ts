@@ -34,11 +34,13 @@ public Fields:any;
     {title: 'New Requests', url:'/new-requests',icon:'person'},
     {title:'Completed Forms',url:'/completed',icon:'person'},
     {title:'Actions',url:'/actions',icon:'person'},
+    {title:'Checked out',url:'/checked-out',icon:'person'},
+
   ]
 
   public security_board:any=[
     {title:'Scan QR Code',url:'/scan-qr',icon:'qr-code-outline'},
-    {title:'Checked out form',url:'/checked-out',icon:'person'},
+    {title:'Checked out',url:'/checked-out',icon:'person'},
 
   ]
   constructor(private router:Router,private menu:MenuController) {

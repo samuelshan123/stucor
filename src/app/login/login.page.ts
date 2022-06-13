@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
     private http: HttpClient,
     private router:Router
   ) {}
-
+  // ionic cap run android -l --external
   ngOnInit() {
 
     this.role="student";

@@ -25,18 +25,18 @@ export class CheckedOutPage implements OnInit {
     console.log(this.userData);
     
     this.spinner.show();
-    // var payload
-    // if (this.Role=='in-charge') {
-    //   payload={department:this.userData.department,semester:this.userData.semester,role:this.Role}
-    // } else if(this.Role==='hod'){
-    //    payload={department:this.userData.department,role:this.Role}
-    // }
-    // else if(this.Role==='principal'){
-    //   payload={role:this.Role}
-    // }
+    var payload
+    if (this.Role=='in-charge') {
+      payload={department:this.userData.department,semester:this.userData.semester,role:this.Role}
+    } else if(this.Role==='hod'){
+       payload={department:this.userData.department,role:this.Role}
+    }
+    else if(this.Role==='principal'||this.Role==='security'){
+      payload=null
+    }
 
       
-    this.api.Post(this.api.POST_URL.CHECKED_OUT,null).subscribe((res:any)=>{
+    this.api.Post(this.api.POST_URL.CHECKED_OUT,payload).subscribe((res:any)=>{
       if(res.status=='success'){
         console.log(res);
         
@@ -52,8 +52,9 @@ export class CheckedOutPage implements OnInit {
             semester:res.requests[i].semester,
             year:res.requests[i].year,
             description:JSON.parse(res.requests[i].description),
-            requested_at:res.requests[i].requested_at,
+            checked_at:res.requests[i].checked_at,
             form_type:res.requests[i].form_type,
+            status:res.requests[i].status,
           }
           this.Requests.push(details);
           console.log(details);

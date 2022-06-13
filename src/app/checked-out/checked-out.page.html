@@ -13,7 +13,7 @@
           <article class="leaderboard__profile" (click)="viewData(item)">
             <img src="assets/images/smce.png" alt="pic" class="leaderboard__picture">
             <span class="leaderboard__name">{{item.name|titlecase}} <span>({{item.department}})</span></span>
-            <span class="leaderboard__value">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span>
+            <span class="leaderboard__value">{{item.checked_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.checked_at|date:'h:mm a'}}</span>
           </span>
           </article>
         </main>

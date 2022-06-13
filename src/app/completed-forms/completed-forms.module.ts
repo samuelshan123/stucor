@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CompletedFormsPageRoutingModule } from './completed-forms-routing.module';
 
 import { CompletedFormsPage } from './completed-forms.page';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CompletedFormsPageRoutingModule
+    CompletedFormsPageRoutingModule,
+    NgxSpinnerModule
   ],
   declarations: [CompletedFormsPage]
 })

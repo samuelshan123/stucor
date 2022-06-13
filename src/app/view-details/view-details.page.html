@@ -24,7 +24,7 @@
               </div>
             </div>
 
-            <div class="container">
+            <div class="container" [hidden]="data.status==='CO'">
               <div class="row">
                 <div class="button-area">
                   <button type="submit" class="btn btn-labeled btn-success" (click)="click('y')">

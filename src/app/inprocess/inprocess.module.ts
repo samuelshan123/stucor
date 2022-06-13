@@ -8,6 +8,7 @@ import { InprocessPageRoutingModule } from './inprocess-routing.module';
 
 import { InprocessPage } from './inprocess.page';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     FormsModule,
     IonicModule,
     InprocessPageRoutingModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    NgxSpinnerModule
   ],
   declarations: [InprocessPage]
 })

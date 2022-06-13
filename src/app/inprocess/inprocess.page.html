@@ -58,7 +58,7 @@
       </div>
     </div>
 
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center"*ngIf="status==='completed'" >
       <ngx-qrcode
       style="width: 200px; height: 200px;"
     [elementType]="elementType"
@@ -69,5 +69,6 @@
 
     </div>
   </div>
+  <!-- <ngx-spinner type="ball-spin-clockwise" size="medium"><p style="color: white; font-size: 18px;">Loading....</p></ngx-spinner> -->
 
 </ion-content>
