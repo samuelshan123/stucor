@@ -41,7 +41,7 @@ export class ScanQrPage implements OnInit {
       // const data=JSON.stringify(barcodeData.text);
       // this.toaster.success('Barcode data', data);
       // this.extarctedData=JSON.parse(data);
-      this.toaster.success( 'Barcode data', barcodeData.text);
+      // this.toaster.success( 'Barcode data', barcodeData.text);
  
 
         if(barcodeData.text!=null||barcodeData.text!=undefined ||barcodeData.text!=''){
