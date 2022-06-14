@@ -54,6 +54,8 @@ export class NewRequestsPage implements OnInit {
             description:JSON.parse(res.requests[i].description),
             requested_at:res.requests[i].requested_at,
             form_type:res.requests[i].form_type,
+            iactioned_at:res.requests[i].iactioned_at,
+            hactioned_at:res.requests[i].hactioned_at,
           }
           this.Requests.push(details);
           console.log(details);

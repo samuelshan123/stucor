@@ -10,12 +10,17 @@
     <article class="leaderboard">
       <div>
         <main class="leaderboard__profiles" *ngFor="let item of Requests">
-          <article class="leaderboard__profile" (click)="viewData(item)">
+          <div class="leaderboard__profile" (click)="viewData(item)">
             <img src="assets/images/smce.png" alt="pic" class="leaderboard__picture">
             <span class="leaderboard__name">{{item.name|titlecase}} <span>({{item.department}})</span></span>
-            <span class="leaderboard__value">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span>
+            <span class="leaderboard__value" *ngIf="Role=='in-charge'">{{item.requested_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.requested_at|date:'h:mm a'}}</span></span>
+            <span class="leaderboard__value" *ngIf="Role=='hod'">{{item.iactioned_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.iactioned_at|date:'h:mm a'}}</span></span>
+            <span class="leaderboard__value" *ngIf="Role=='principal'">{{item.hactioned_at|date:'dd/MM/yyyy'}}  <span style="color: orange;">{{item.hactioned_at|date:'h:mm a'}}</span>
+
+
+            
           </span>
-          </article>
+        </div>
         </main>
       </div>
     </article>

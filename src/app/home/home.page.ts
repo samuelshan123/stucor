@@ -15,32 +15,32 @@ export class HomePage implements OnInit {
 public Fields:any;
 
   public pages:any[]=[
-    {title: 'About us', url:'/about',icon:'information-circle'},
-    {title: 'Privacy policy', url:'/privacy',icon:'document-lock'},
-    {title: 'Sign Out', url:'',icon:'log-out',route: false},
+    // {title: 'About us', url:'/about',icon:'information-circle'},
+    // {title: 'Privacy policy', url:'/privacy',icon:'document-lock'},
+    // {title: 'Sign Out', url:'',icon:'log-out',route: false},
   ]
 
   public student_board:any=[
-    {title: 'Gate Pass', url:'/gate-pass',icon:'person'},
-    {title: 'Leave Form', url:'/leave-form',icon:'person'},
-    {title: 'Form Status', url:'/form-status',icon:'person'},
-    {title:'Notifications',url:'/notifications',icon:'person'},
-    {title:'Completed Forms',url:'/completed',icon:'person'},
-    {title:'Completed Gate Pass',url:'/completed-gate-pass',icon:'person'},
+    {title: 'Gate Pass', url:'/gate-pass',icon:'clipboard'},
+    {title: 'Leave Form', url:'/leave-form',icon:'clipboard'},
+    {title: 'Form Status', url:'/form-status',icon:'hourglass'},
+    {title:'Notifications',url:'/notifications',icon:'notifications'},
+    {title:'Check out',url:'/completed-gate-pass',icon:'walk'},
+    {title:'Completed Forms',url:'/completed',icon:'checkmark-circle-outline'},
     // {title:'Actions',url:'/notifications',icon:'person'},
   ]
 
   public staff_board:any=[
     {title: 'New Requests', url:'/new-requests',icon:'person'},
-    {title:'Completed Forms',url:'/completed',icon:'person'},
-    {title:'Actions',url:'/actions',icon:'person'},
-    {title:'Checked out',url:'/checked-out',icon:'person'},
+    {title:'Completed Forms',url:'/completed',icon:'checkmark-circle-outline'},
+    {title:'Actions',url:'/actions',icon:'alert'},
+    {title:'Checked out',url:'/checked-out',icon:'exit'},
 
   ]
 
   public security_board:any=[
     {title:'Scan QR Code',url:'/scan-qr',icon:'qr-code-outline'},
-    {title:'Checked out',url:'/checked-out',icon:'person'},
+    {title:'Checked out',url:'/checked-out',icon:'exit'},
 
   ]
   constructor(private router:Router,private menu:MenuController) {
