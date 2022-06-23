@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
 
@@ -39,7 +40,8 @@ export class GatePassPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private api: ApiService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    public spinner:NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -130,6 +132,7 @@ export class GatePassPage implements OnInit {
     if (this.myForm.invalid) {
       return;
     } else {
+      this.spinner.show()
       console.log(this.myForm.value);
 
       let payload = {
@@ -142,9 +145,11 @@ export class GatePassPage implements OnInit {
 
       this.api.Post(this.api.POST_URL.REQUEST, payload).subscribe((data:any)=>{
         if(data.status === 'success'){
+          this.spinner.hide()
           this.toaster.success("Form Submitted Successfully");
           this.router.navigate(['/home']);
         }else{
+          this.spinner.hide()
           this.toaster.error(data.message);
         }
       })

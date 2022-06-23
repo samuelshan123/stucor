@@ -63,9 +63,10 @@ this.spinner.show();
               this.spinner.hide();
               this.data=res.data;
               this.toaster.success('Success','Verified Successfully',{
+                positionClass:'toast-center-center',
                 timeOut:3000,
               });
-    this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/home');
             }
             else{
               this.spinner.hide();
@@ -75,7 +76,10 @@ this.spinner.show();
           }
           else{
             this.spinner.hide();
-            this.toaster.error('Form not verified');
+            this.toaster.error('Form Already verified',"",{
+              positionClass:'toast-center-center',
+              timeOut:4000,
+          });
           }
         })
 

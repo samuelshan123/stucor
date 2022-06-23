@@ -25,7 +25,9 @@ public Fields:any;
     {title: 'Leave Form', url:'/leave-form',icon:'clipboard'},
     {title: 'Form Status', url:'/form-status',icon:'hourglass'},
     {title:'Notifications',url:'/notifications',icon:'notifications'},
-    {title:'Check out',url:'/completed-gate-pass',icon:'walk'},
+    // {title:'Check out',url:'/completed-gate-pass',icon:'walk'},
+    {title:'Checked out',url:'/checked-out',icon:'walk'},
+
     {title:'Completed Forms',url:'/completed',icon:'checkmark-circle-outline'},
     // {title:'Actions',url:'/notifications',icon:'person'},
   ]
@@ -36,6 +38,11 @@ public Fields:any;
     {title:'Actions',url:'/actions',icon:'alert'},
     {title:'Checked out',url:'/checked-out',icon:'exit'},
 
+  ]
+
+  public principal_board:any=[
+    {title: 'New Requests', url:'/new-requests',icon:'person'},
+    {title:'Checked out',url:'/checked-out',icon:'exit'},
   ]
 
   public security_board:any=[
@@ -55,7 +62,7 @@ public Fields:any;
       this.Fields=this.staff_board;
     }
     else if(this.Role=='principal'){
-      this.Fields=this.staff_board;
+      this.Fields=this.principal_board;
     }
     else if(this.Role=='security'){
       this.Fields=this.security_board;

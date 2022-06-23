@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LeaveFormPageRoutingModule } from './leave-form-routing.module';
 
 import { LeaveFormPage } from './leave-form.page';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { LeaveFormPage } from './leave-form.page';
     IonicModule,
     LeaveFormPageRoutingModule,
     ReactiveFormsModule,
+    NgxSpinnerModule
     
   
   ],

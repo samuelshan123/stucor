@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
 
   // public URL = "http://localhost:8100/api/";
-  public URL = "http://192.168.29.254:3000/";
+  public URL = "http://192.168.1.36:3000/";
 
 public POST_URL:any={
   LOGIN:this.URL+"login",

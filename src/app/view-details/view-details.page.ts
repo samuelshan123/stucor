@@ -26,6 +26,8 @@ export class ViewDetailsPage implements OnInit {
 
   ngOnInit() {
     this.Title = this.data.form_type;
+    console.log(this.Role);
+    
 
     if (
       this.data.form_type === 'leave form' &&
@@ -175,6 +177,8 @@ export class ViewDetailsPage implements OnInit {
   }
 
   updateForm(payload) {
+    console.log(payload);
+    
     this.api.Post(this.api.POST_URL.ACTIONS, payload).subscribe((res: any) => {
       if (res.status == 'success') {
         // this.toaster.success('Request Approved');

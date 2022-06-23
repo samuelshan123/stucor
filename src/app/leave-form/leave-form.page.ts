@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
 
@@ -16,7 +17,8 @@ export class LeaveFormPage implements OnInit {
   isDate: boolean = true;
   public UserData: any = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private formBuilder: FormBuilder,private router:Router,public toaster:ToastrService,private api:ApiService) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,public toaster:ToastrService,private api:ApiService,
+    public spinner:NgxSpinnerService) { }
 
   ngOnInit() {
     console.log(this.UserData.id);
@@ -53,7 +55,7 @@ export class LeaveFormPage implements OnInit {
       if (this.leaveForm.invalid) {
           return;
       }else{
-
+this.spinner.show()
         let payload = {
           user_id: this.UserData.id,
           form_type: 'leave form',
@@ -63,9 +65,11 @@ export class LeaveFormPage implements OnInit {
         }
         this.api.Post(this.api.POST_URL.REQUEST, payload).subscribe((data:any)=>{
           if(data.status === 'success'){
+            this.spinner.hide()
             this.toaster.success("Leave Request has been sent");
             this.router.navigate(['/home']);
           }else{
+            this.spinner.hide()
             this.toaster.error(data.message);
           }
         })         
